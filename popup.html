@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KeyValueList Extension</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Omnibar Shortcuts</h2>
+    <p>Press ` and Tab to access your shortcuts</p>
+    <p>Please do not forget to add protocol name (https://, ftp://, etc)</p>
+    <table id="kvTable">
+      <tr>
+        <th>Shortcut</th>
+        <th>Complete URL</th>
+        <th>  </th> 
+      </tr>
+      <tr>
+        <td><input type="text" id="keyInput" placeholder="Enter Shortcut" autocomplete="off"></td>
+        <td><input type="text" id="valueInput" placeholder="Enter URL" autocomplete="off"></td>
+        <td><button id="addButton">+</button></td>
+      </tr>
+    </table>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>
