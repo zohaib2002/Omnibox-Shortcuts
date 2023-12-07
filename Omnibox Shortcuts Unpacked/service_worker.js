@@ -1,7 +1,8 @@
 chrome.omnibox.setDefaultSuggestion({
-    description: "Type the shortcut text to acces the website"
+    description: "Type the shortcut text to access the website"
 });
 
+// Retrive the shortcut pairs
 function getShortcutPairs() {
     return new Promise((resolve) => {
         chrome.storage.local.get('keyValuePairs', function (result) {
@@ -13,7 +14,6 @@ function getShortcutPairs() {
 
 chrome.omnibox.onInputEntered.addListener(async function(shortcut) {
 
-    // Store this on some online server
     const shortcutPairs = await getShortcutPairs();
 
     index = shortcut.indexOf('/')
@@ -28,6 +28,7 @@ chrome.omnibox.onInputEntered.addListener(async function(shortcut) {
         }
 
     } else {
+        // Incase there is the presence of a path or URL parameters in the shortcut text
 
         let siteName = shortcut.substring(0, index);
         let resource = shortcut.substring(index);

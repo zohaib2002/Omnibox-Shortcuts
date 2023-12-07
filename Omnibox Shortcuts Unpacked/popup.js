@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   
+
+  // Function to load the shortcuts
   function loadKeyValuePairs() {
     chrome.storage.local.get('keyValuePairs', function (result) {
       const keyValuePairs = result.keyValuePairs || {};
@@ -33,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   
+  // Function to add a shortcut
   function addKeyValuePair() {
     const keyInput = document.getElementById('keyInput');
     const valueInput = document.getElementById('valueInput');
@@ -74,13 +77,23 @@ document.addEventListener('DOMContentLoaded', function () {
     return regex.test(str);
   }
   
+  // Function to add a row in the table with the shortcut and the URL
   function appendRowToTable(table, key, value) {
-    const row = table.insertRow(-1);
+    const row = table.insertRow(2);
     const keyCell = row.insertCell(0);
     const valueCell = row.insertCell(1);
   
     keyCell.textContent = key;
-    valueCell.textContent = value;
+    // Create a link element
+    const link = document.createElement('a');
+    link.className = "url_link";
+    link.href = value;
+
+    // Set the link text content
+    link.textContent = value;
+
+    // Append the link to valueCell
+    valueCell.appendChild(link);
   
     // Create and append the delete button
     const deleteButton = document.createElement('button');

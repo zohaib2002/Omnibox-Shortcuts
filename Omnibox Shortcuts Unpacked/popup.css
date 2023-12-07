@@ -6,11 +6,13 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    /*height: 100vh;*/
+  }
+
+  .repo {
+    color: white;
   }
   
   .container {
-    /*width: 400px; /* Adjusted width */
     text-align: center;
   }
   
@@ -18,7 +20,7 @@ body {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
-    border: none; /* Removed border */
+    border: none;
   }
   
   th, td {
@@ -32,20 +34,16 @@ body {
     font-weight: 800;
   }
 
-  td:not(:first-child) {
+  .url_link {
     color: #3498db;
-  }
-  
-  .input-container {
-    display: flex;
-    margin-top: 10px;
+    text-decoration: none;
   }
   
   input {
     flex-grow: 1;
     margin-right: 8px;
     padding: 10px;
-    border: none; /* Removed border */
+    border: none;
     background-color: #1c1c1c;
     color: white;
   }
@@ -61,7 +59,6 @@ body {
     font-weight: bold;
   }
   
-  /* Styling for the delete button */
 .deleteButton {
     padding: 3px 5px;
     cursor: pointer;

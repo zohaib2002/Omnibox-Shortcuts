@@ -1,18 +1,19 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "~",
   "version": "1.0",
   "description": "Press ` and then press Tab in the Omnibar to access your shortcuts",
   "permissions": ["tabs", "storage"],
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "48": "images/icon48.png"
+      "48": "images/icon48.png",
+      "64": "images/icon64.png",
+      "128": "images/icon128.png"
     }
   },
   "background": {
-    "page": "background.html",
-    "persistent": false
+    "service_worker": "service_worker.js"
   },
   "icons": {
     "48": "images/icon48.png",
