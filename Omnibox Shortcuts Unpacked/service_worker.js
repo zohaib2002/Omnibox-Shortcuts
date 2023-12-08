@@ -12,6 +12,24 @@ function getShortcutPairs() {
     });
 }
 
+chrome.omnibox.onInputChanged.addListener(async function(text, suggest) {
+
+  var shortcutPairs = await getShortcutPairs();
+    
+  const suggestions = [];
+
+  for (const key in shortcutPairs) {
+    if (key.includes(text) || text.includes(key) || key == text) {
+      suggestions.push({
+        content: shortcutPairs[key],
+        description: key + " - " +shortcutPairs[key]
+      });
+    }
+  }
+
+  suggest(suggestions);
+});
+
 chrome.omnibox.onInputEntered.addListener(async function(shortcut) {
 
     const shortcutPairs = await getShortcutPairs();
