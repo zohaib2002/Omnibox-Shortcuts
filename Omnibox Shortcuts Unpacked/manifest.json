@@ -3,7 +3,7 @@
   "name": "Omnibox Shortcuts",
   "version": "1.0",
   "description": "Press ` and then press Tab in the Omnibar to access your shortcuts",
-  "permissions": ["tabs", "storage"],
+  "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
