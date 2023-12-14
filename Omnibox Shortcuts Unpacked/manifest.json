@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Omnibox Shortcuts",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Press ` and then press Tab in the Omnibar to access your shortcuts",
-  "permissions": ["storage"],
+  "permissions": ["storage", "clipboardWrite"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {

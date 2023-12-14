@@ -2,7 +2,8 @@ chrome.omnibox.setDefaultSuggestion({
     description: "Type the shortcut text to access the website"
 });
 
-// Retrive the shortcut pairs
+
+// Function to retrive the shortcut pairs
 function getShortcutPairs() {
     return new Promise((resolve) => {
         chrome.storage.local.get('keyValuePairs', function (result) {
@@ -12,6 +13,8 @@ function getShortcutPairs() {
     });
 }
 
+
+// Handles suggestion while typing in the omnibox
 chrome.omnibox.onInputChanged.addListener(async function(text, suggest) {
 
   var shortcutPairs = await getShortcutPairs();
@@ -30,6 +33,8 @@ chrome.omnibox.onInputChanged.addListener(async function(text, suggest) {
   suggest(suggestions);
 });
 
+
+// Handles navigating to the mapped URL
 chrome.omnibox.onInputEntered.addListener(async function(shortcut) {
 
     const shortcutPairs = await getShortcutPairs();

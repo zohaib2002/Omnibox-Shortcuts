@@ -7,11 +7,7 @@ body {
     align-items: center;
     color: white;
   }
-
-  .repo {
-    color: white;
-  }
-  
+ 
   .container {
     text-align: center;
   }
@@ -27,6 +23,7 @@ body {
     padding: 8px;
     text-align: left;
     font-weight: bold;
+    font-size: 13px;
   }
   
   th {
@@ -37,6 +34,10 @@ body {
   .url_link {
     color: #3498db;
     text-decoration: none;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
   }
   
   input {
@@ -48,24 +49,38 @@ body {
     color: white;
   }
   
-  button {
+  .addButton {
     padding: 3px 5px;
     cursor: pointer;
-    background-color: #0a0a0a;
+    background-color: transparent;
     color: #4caf50;
     border: none;
-    border-radius: 3px;
     font-size: 16px;
     font-weight: bold;
+  }
+
+  .importButton {
+    padding: 3px 5px;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: none;
+    text-decoration: underline;
+    margin-right: 10px;
+    font-size: 12px;
   }
   
 .deleteButton {
     padding: 3px 5px;
     cursor: pointer;
-    background-color: #0a0a0a;
+    background-color: transparent;
     color: #e74c3c;
     border: none;
-    border-radius: 3px;
     font-size: 16px;
     font-weight: bold;
+  }
+
+
+  .link_container {
+    display: inline-block;
   }
