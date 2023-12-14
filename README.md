@@ -20,6 +20,11 @@ NOTE: the ``` ` ``` key is usually located right above the `Tab` key.
 ### ■ Supports extended paths and URL parameters.
 - For example if the following the keyword `g` is assigned to `https://google.com`, typing `g/search?q=hello` will automatically imply `https://google.com/search?q=hello`.
 
+### ■ Ability to import and export your Shortcuts.
+- Retain all your data when you shift browsers / devices by exporting it from the old browser / device and then importing it into the new browser / device.
+- **Export:** All of your data is exported into your Clipboard as a JSON string.
+- **Import:** Import your data by pasting the exported JSON string.
+
 ### ■ Screenshots
 ![ss_combined](https://github.com/zohaib2002/Omnibox-Shortcuts/assets/68106969/daa7e1a3-190c-4158-a703-9149c5ce871e)
 
