@@ -1,8 +1,9 @@
 
 var keyValuePairs;
+var lightTheme;
+var table;
 
 document.addEventListener('DOMContentLoaded', function () {
-  loadKeyValuePairs();
 
   const addButton = document.getElementById('addButton');
   addButton.addEventListener('click', addKeyValuePair);
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
   exportButton.addEventListener('click', exportShortcutsToJSON);
 
   const githubButton = document.getElementById('githubButton');
-  githubButton.addEventListener('click', opnGithub);
+  githubButton.addEventListener('click', openGithub);
 
   const keyInput = document.getElementById('keyInput');
   const valueInput = document.getElementById('valueInput');
@@ -31,11 +32,30 @@ document.addEventListener('DOMContentLoaded', function () {
       addKeyValuePair();
     }
   });
+
+  const toggleThemeButton = document.getElementById("toggleThemeButton");
+
+  // Add a click event listener to the button
+  toggleThemeButton.addEventListener("click", function () {
+
+    lightTheme = ! lightTheme;
+
+    setTheme();
+    
+    chrome.storage.local.set({ 'lightTheme': lightTheme });
+  });
+
+  table = document.getElementById('kvTable');
+
+  loadTheme();
+
+  loadKeyValuePairs();
+
 });
 
 
 // Function to open the github page
-function opnGithub() {
+function openGithub() {
   chrome.tabs.create({ url: "https://github.com/zohaib2002/Omnibox-Shortcuts" });
 }
 
@@ -75,8 +95,17 @@ function importShortcutsFromJSON() {
 
       chrome.storage.local.set({ 'keyValuePairs': keyValuePairs }, function() {
         alert("Shortcuts Imported Succesfully!");
-        // Reload the popup
-        window.close();
+        // Reload the table
+        
+        var rowCount = table.rows.length;
+
+        // Loop through all rows and remove them
+        for (var i = rowCount - 1; i > 1; i--) {
+            table.deleteRow(i);
+        }
+
+        loadKeyValuePairs();
+
       });
     } catch (err) {
       alert("Import Failed");
@@ -90,14 +119,48 @@ function importShortcutsFromJSON() {
 }
 
 
+// Function to set the theme
+function setTheme() {
+  const body = document.body;
+  body.style.color = (lightTheme)? "black" : "white";
+  body.style.backgroundColor = (lightTheme) ? "#cccccc" : "#0a0a0a";
+
+  importButton.style.color = (lightTheme)? "black" : "white";
+  exportButton.style.color = (lightTheme)? "black" : "white";
+  githubButton.style.color = (lightTheme)? "black" : "white";
+
+  var thElements = document.querySelectorAll("#kvTable th");
+  thElements[0].style.backgroundColor = (lightTheme) ? "#c1c1c1" : "#1c1c1c";
+  thElements[1].style.backgroundColor = (lightTheme) ? "#c1c1c1" : "#1c1c1c";
+  thElements[2].style.backgroundColor = (lightTheme) ? "#c1c1c1" : "#1c1c1c";
+
+  keyInput.style.backgroundColor = (lightTheme) ? "#c1c1c1" : "#1c1c1c";
+  valueInput.style.backgroundColor = (lightTheme) ? "#c1c1c1" : "#1c1c1c";
+  keyInput.style.color = (lightTheme) ? "black" : "white";
+  valueInput.style.color = (lightTheme) ? "black" : "white";
+
+  toggleThemeButton.textContent = lightTheme ? "☾" : "☀";
+  toggleThemeButton.style.color = (lightTheme)? "black" : "white";
+}
+
+
+// Function loads the Theme
+function loadTheme() {
+  chrome.storage.local.get('lightTheme', function (result) {
+    lightTheme = result.lightTheme || false;
+
+    setTheme();
+  });
+}
+
+
 // Function to load the shortcuts and update the popup
 function loadKeyValuePairs() {
   chrome.storage.local.get('keyValuePairs', function (result) {
     keyValuePairs = result.keyValuePairs || {};
-    const table = document.getElementById('kvTable');
 
     Object.entries(keyValuePairs).forEach(([key, value]) => {
-      appendRowToTable(table, key, value);
+      appendRowToTable(key, value);
     });
 
   });
@@ -124,8 +187,7 @@ function addKeyValuePair() {
       keyValuePairs[key] = value
 
       chrome.storage.local.set({ 'keyValuePairs': keyValuePairs }, function () {
-          const table = document.getElementById('kvTable');
-          appendRowToTable(table, key, value);
+          appendRowToTable(key, value);
 
           keyInput.value = '';
           valueInput.value = '';
@@ -147,7 +209,7 @@ function isAlphaNumeric(str) {
 
 
 // Function to add a row in the table with the shortcut and the URL
-function appendRowToTable(table, key, value) {
+function appendRowToTable(key, value) {
   const row = table.insertRow(2);
   const keyCell = row.insertCell(0);
   const valueCell = row.insertCell(1);

@@ -1,11 +1,19 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #0a0a0a;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+  }
+
+  code {
+    background-color: #ff002f49;
+    font-size: 13px;
+    border-radius: 3px;
+    font-weight: 700;
+    padding: 2px 6px;
   }
  
   .container {
@@ -28,18 +36,9 @@ body {
   
   th {
     background-color: #1c1c1c;
-    font-weight: 800;
+    font-weight: 900;
   }
-
-  .url_link {
-    color: #3498db;
-    text-decoration: none;
-    background-color: transparent;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
+ 
   input {
     flex-grow: 1;
     margin-right: 8px;
@@ -48,39 +47,54 @@ body {
     background-color: #1c1c1c;
     color: white;
   }
-  
-  .addButton {
+
+  button {
     padding: 3px 5px;
     cursor: pointer;
-    background-color: transparent;
-    color: #4caf50;
     border: none;
+    background-color: transparent;
+    font-weight: 700;
+  }
+
+  .url_link {
+    color: #0072bd;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    max-width: 40ch;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .addButton {
+    color: #4caf50;
     font-size: 16px;
-    font-weight: bold;
   }
 
   .importButton {
-    padding: 3px 5px;
-    cursor: pointer;
-    background-color: transparent;
     color: white;
-    border: none;
     text-decoration: underline;
     margin-right: 10px;
     font-size: 12px;
+    font-weight: 400;
   }
   
 .deleteButton {
-    padding: 3px 5px;
-    cursor: pointer;
-    background-color: transparent;
     color: #e74c3c;
-    border: none;
     font-size: 16px;
-    font-weight: bold;
   }
 
 
   .link_container {
     display: inline-block;
   }
+
+  /* Add these styles for the new button */
+#toggleThemeButton {
+  position: absolute;
+  top: 8px; /* Adjust the top distance as needed */
+  right: 10px; /* Adjust the right distance as needed */
+  padding: 5px;
+  font-size: 22px;
+  color: white;
+  outline: none;
+}
