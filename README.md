@@ -26,7 +26,8 @@ NOTE: the ``` ` ``` key is usually located right above the `Tab` key.
 - **Import:** Import your data by pasting the exported JSON string.
 
 ### ■ Screenshots
-![ss_combined](https://github.com/zohaib2002/Omnibox-Shortcuts/assets/68106969/daa7e1a3-190c-4158-a703-9149c5ce871e)
+![ss_combined](https://github.com/zohaib2002/Omnibox-Shortcuts/assets/68106969/2d42581c-49ae-43c6-83c0-67686e02b976)
+
 
 ### ■ Install in your browser
 [![button](https://github.com/zohaib2002/Omnibox-Shortcuts/assets/68106969/53a20284-41f4-49d3-883a-629516537d1b)](https://chromewebstore.google.com/detail/omnibox-shortcuts/bkbfonphcnplohammgnjjbgabboooiig)
